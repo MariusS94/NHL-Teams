@@ -1,24 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+
+import "./App.css";
+import List from "./components/List";
+import { ListItemText } from "./components/ListItemText";
+import ListItem from "./components/ListItem";
+import ListItemIcon from "./components/ListItemIcon";
+import arrowRight from "./assets/eishockey.svg";
 
 function App() {
+  const team = {
+    name: "New Jersey devis",
+    id: "1",
+    city: "Newark",
+    conference: "Eastern",
+    firstDay: "1982",
+    venue: "Prudential Center",
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <header>NHL-Teams</header>
+      <main>
+        <List>
+          <ListItem>
+            <ListItemText
+              name={team.name}
+              id={`ID: ${team.id}`}
+              city={`City: ${team.city}`}
+              venue={`Venue: ${team.venue}`}
+              conference={`Conference: ${team.conference}`}
+              firstDay={`First day of play: ${team.firstDay}`}
+            />
+            <ListItemIcon image={arrowRight} alt={"arrow rigtht"} />
+          </ListItem>
+        </List>
+      </main>
+      <footer>Placeholder</footer>
     </div>
   );
 }
