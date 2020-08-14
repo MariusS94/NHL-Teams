@@ -7,7 +7,7 @@ function App() {
     <div className="app">
       <header>NHL-Teams</header>
       <main></main>
-      <footer></footer>
+      <footer>Placeholder</footer>
     </div>
   );
 }
