@@ -6,20 +6,29 @@ import { ListItemText } from "./components/ListItemText";
 import ListItem from "./components/ListItem";
 import ListItemIcon from "./components/ListItemIcon";
 import arrowRight from "./assets/eishockey.svg";
+import { fetchData } from "./api/nhl-api";
 
 function App() {
-  const team = {
+  /* const team = {
     name: "New Jersey devis",
     id: "1",
     city: "Newark",
     conference: "Eastern",
     firstDay: "1982",
     venue: "Prudential Center",
+  }; */
+  const team = async function handleClick() {
+    const data = await fetchData();
+    console.log(data);
+    return data;
   };
 
   return (
     <div className="app">
-      <header>NHL-Teams</header>
+      <header>
+        <button onClick={team}>fetch</button>
+        NHL-Teams
+      </header>
       <main>
         <List>
           <ListItem>
