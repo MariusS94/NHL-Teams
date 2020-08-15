@@ -8,7 +8,7 @@ export async function fetchData() {
   const result = await respond.json();
 
   const team = result.teams.map((teamdata) => ({
-    name: teamdata.teamName,
+    name: teamdata.name,
     id: teamdata.id,
     city: teamdata.venue.city,
     venue: teamdata.venue.name,
