@@ -1,38 +1,52 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import "./App.css";
 import List from "./components/List";
 import { ListItemText } from "./components/ListItemText";
 import ListItem from "./components/ListItem";
 import ListItemIcon from "./components/ListItemIcon";
-import arrowRight from "./assets/eishockey.svg";
+import player from "./assets/eishockey.svg";
+import { fetchData } from "./api/nhl-api";
+import LoadingScreen from "./components/LoadingScreen";
+import hockeypuck from "./assets/puck.svg";
 
+function waitFor(time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
 function App() {
-  const team = {
-    name: "New Jersey devis",
-    id: "1",
-    city: "Newark",
-    conference: "Eastern",
-    firstDay: "1982",
-    venue: "Prudential Center",
-  };
+  const [team, setTeam] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
+  useEffect(() => {
+    async function fetchTeams() {
+      await waitFor(2000);
+      const teamInfo = await fetchData();
+      setIsLoaded(true);
+      setTeam(teamInfo);
+    }
+    fetchTeams();
+  }, []);
+  if (!isLoaded) {
+    return <LoadingScreen src={hockeypuck} alt="loading icon puck" />;
+  }
   return (
     <div className="app">
       <header>NHL-Teams</header>
       <main>
         <List>
-          <ListItem>
-            <ListItemText
-              name={team.name}
-              id={`ID: ${team.id}`}
-              city={`City: ${team.city}`}
-              venue={`Venue: ${team.venue}`}
-              conference={`Conference: ${team.conference}`}
-              firstDay={`First day of play: ${team.firstDay}`}
-            />
-            <ListItemIcon image={arrowRight} alt={"arrow rigtht"} />
-          </ListItem>
+          {team?.map((team) => (
+            <ListItem key={team.id} link={"#"}>
+              <ListItemText
+                name={team.name}
+                id={`ID: ${team.id}`}
+                city={`City: ${team.city}`}
+                venue={`Venue: ${team.venue}`}
+                conference={`Conference: ${team.conference}`}
+                firstDay={`First yeargit  of play: ${team.firstYear}`}
+              />
+              <ListItemIcon image={player} alt={"hockeyplayer icon"} />
+            </ListItem>
+          ))}
         </List>
       </main>
       <footer>Placeholder</footer>
