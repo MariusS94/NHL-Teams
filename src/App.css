@@ -16,6 +16,7 @@
   background: var(--bg-greygradient-);
   border: solid;
   border-width: 5px 0px;
+  overflow: auto;
 }
 
 .app > footer {
