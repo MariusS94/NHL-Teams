@@ -9,6 +9,7 @@ import player from "./assets/eishockey.svg";
 import { fetchData } from "./api/nhl-api";
 import LoadingScreen from "./components/LoadingScreen";
 import hockeypuck from "./assets/puck.svg";
+import Roster from "./Roster.js";
 
 function waitFor(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
@@ -35,14 +36,14 @@ function App() {
       <main>
         <List>
           {team?.map((team) => (
-            <ListItem key={team.id} link={"#"}>
+            <ListItem key={team.id} link={Roster}>
               <ListItemText
                 name={team.name}
                 id={`ID: ${team.id}`}
                 city={`City: ${team.city}`}
                 venue={`Venue: ${team.venue}`}
                 conference={`Conference: ${team.conference}`}
-                firstDay={`First yeargit  of play: ${team.firstYear}`}
+                firstDay={`First year of play: ${team.firstYear}`}
               />
               <ListItemIcon image={player} alt={"hockeyplayer icon"} />
             </ListItem>
