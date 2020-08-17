@@ -35,7 +35,7 @@ function App() {
       <main>
         <List>
           {team?.map((team) => (
-            <ListItem key={team.id} link={Roster}>
+            <ListItem key={team.id} link={"#"}>
               <ListItemText
                 name={team.name}
                 id={`ID: ${team.id}`}
