@@ -9,7 +9,6 @@ import player from "./assets/eishockey.svg";
 import { fetchData } from "./api/nhl-api";
 import LoadingScreen from "./components/LoadingScreen";
 import hockeypuck from "./assets/puck.svg";
-import Roster from "./Roster.js";
 
 function waitFor(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
