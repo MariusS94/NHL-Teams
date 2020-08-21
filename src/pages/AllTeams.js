@@ -7,7 +7,6 @@ import ListItem from "../components/ListItem";
 import ListItemText from "../components/ListItemText";
 import ListItemIcon from "../components/ListItemIcon";
 import player from "../assets/eishockey.svg";
-import { Link } from "react-router-dom";
 
 function waitFor(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
@@ -43,10 +42,7 @@ const AllTeams = () => {
           ))}
         </List>
       </main>
-      <footer>
-        <Link to="/">All Teams</Link>
-        <Link to="/details">Details</Link>
-      </footer>
+      <footer>Placeholder</footer>
     </div>
   );
 };

@@ -10,6 +10,7 @@
   font-size: 1.4rem;
   font-weight: bold;
   background: var(--bg-bluegradient-);
+  display: flex;
 }
 
 .app > main {

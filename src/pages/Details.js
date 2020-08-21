@@ -6,12 +6,14 @@ import ListItemText from "../components/ListItemText";
 import { fetchTeamData } from "../api/nhl-api";
 import LoadingScreen from "../components/LoadingScreen";
 import hockeypuck from "../assets/puck.svg";
-import { Link, useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+import arrow from "../assets/arrowLeft.svg";
 
 const Details = () => {
   const { name } = useParams();
   const [team, setTeam] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     async function fetchTeams() {
@@ -28,7 +30,12 @@ const Details = () => {
   }
   return (
     <div className="app">
-      <header>NHL-Teams</header>
+      <header>
+        <button onClick={() => history.goBack()}>
+          <img src={arrow} alt="Arrow left"></img>
+        </button>
+        <div>NHL-Teams</div>
+      </header>
       <main>
         <List>
           {team?.map((team) => (
@@ -45,10 +52,7 @@ const Details = () => {
           ))}
         </List>
       </main>
-      <footer>
-        <Link to="/">Home</Link>
-        <Link to="/details">Details</Link>
-      </footer>
+      <footer>Placeholder</footer>
     </div>
   );
 };
