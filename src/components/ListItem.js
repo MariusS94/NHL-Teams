@@ -2,10 +2,10 @@ import React from "react";
 import "./ListItem.css";
 import { Link } from "react-router-dom";
 
-const ListItem = (props) => {
+const ListItem = ({ link, children }) => {
   return (
-    <Link className={"listItem"} to={props.link}>
-      {props.children}
+    <Link className={"listItem"} to={link}>
+      {children}
     </Link>
   );
 };

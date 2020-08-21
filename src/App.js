@@ -1,19 +1,27 @@
 import React from "react";
 import "./App.css";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import AllTeams from "./components/AllTeams";
-import Details from "./components/Details";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import AllTeams from "./pages/AllTeams";
+import Details from "./pages/Details";
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/details">
+        <Route exact path="/teams/:name">
           <Details></Details>
         </Route>
-        <Route path="/">
+        <Route exact path="/teams">
           <AllTeams></AllTeams>
+        </Route>
+        <Route path="/">
+          <Redirect to="/teams"></Redirect>
         </Route>
       </Switch>
     </Router>

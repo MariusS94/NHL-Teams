@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { fetchData } from "../api/nhl-api";
-import LoadingScreen from "./LoadingScreen";
+import LoadingScreen from "../components/LoadingScreen";
 import hockeypuck from "../assets/puck.svg";
-import List from "./List";
-import ListItem from "./ListItem";
-import ListItemText from "./ListItemText";
-import ListItemIcon from "./ListItemIcon";
+import List from "../components/List";
+import ListItem from "../components/ListItem";
+import ListItemText from "../components/ListItemText";
+import ListItemIcon from "../components/ListItemIcon";
 import player from "../assets/eishockey.svg";
 import { Link } from "react-router-dom";
 
@@ -36,7 +36,7 @@ const AllTeams = () => {
       <main>
         <List>
           {team?.map((team) => (
-            <ListItem key={team.id} link="/details">
+            <ListItem key={team.id} link={`/teams/${team.id}`}>
               <ListItemText name={team.name} />
               <ListItemIcon image={player} alt={"hockeyplayer icon"} />
             </ListItem>
