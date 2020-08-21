@@ -36,7 +36,7 @@ const AllTeams = () => {
       <main>
         <List>
           {team?.map((team) => (
-            <ListItem key={team.id} link={"#"}>
+            <ListItem key={team.id} link="/details">
               <ListItemText name={team.name} />
               <ListItemIcon image={player} alt={"hockeyplayer icon"} />
             </ListItem>
