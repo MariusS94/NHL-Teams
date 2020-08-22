@@ -1,7 +1,7 @@
 .app {
   height: 100vh;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto 1fr auto;
 }
 
 .app > header {
@@ -11,6 +11,8 @@
   font-weight: bold;
   background: var(--bg-bluegradient-);
   display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 .app > main {
@@ -24,4 +26,14 @@
   text-align: center;
   padding: 1.3em;
   background: var(--bg-bluegradient-);
+}
+
+.arrowback {
+  background: transparent;
+  border: none;
+  position: fixed;
+  left: 1em;
+}
+.arrowback > img {
+  height: 2.5em;
 }

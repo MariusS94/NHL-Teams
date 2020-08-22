@@ -8,7 +8,7 @@ import LoadingScreen from "../components/LoadingScreen";
 import hockeypuck from "../assets/puck.svg";
 import { useParams, useHistory } from "react-router-dom";
 import arrow from "../assets/arrowLeft.svg";
-
+import "../App.css";
 const Details = () => {
   const { name } = useParams();
   const [team, setTeam] = useState(null);
@@ -31,7 +31,7 @@ const Details = () => {
   return (
     <div className="app">
       <header>
-        <button onClick={() => history.goBack()}>
+        <button className="arrowback" onClick={() => history.goBack()}>
           <img src={arrow} alt="Arrow left"></img>
         </button>
         <div>NHL-Teams</div>
