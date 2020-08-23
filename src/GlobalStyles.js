@@ -1,0 +1,38 @@
+import React from "react";
+import { Global, css } from "@emotion/core";
+
+const GlobalStyles = () => {
+  return (
+    <Global
+      styles={css`
+        body {
+          margin: 0;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+            "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+            "Helvetica Neue", sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+        code {
+          font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+            monospace;
+        }
+        :root {
+          --bg-greygradient-: linear-gradient(
+            90deg,
+            rgba(221, 223, 214, 1) 0%,
+            rgba(131, 133, 142, 1) 100%
+          );
+          --bg-bluegradient-: radial-gradient(
+            circle,
+            rgba(118, 134, 214, 1) 0%,
+            rgba(55, 100, 228, 1) 100%
+          );
+        }
+      `}
+    />
+  );
+};
+
+export default GlobalStyles;

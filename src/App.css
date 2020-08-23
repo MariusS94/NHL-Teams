@@ -1,8 +1,8 @@
-.app {
+/* .app {
   height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
-}
+} */
 
 .app > header {
   text-align: center;
@@ -37,11 +37,11 @@
 .arrowback > img {
   height: 2.5em;
 }
-.searchInput {
+/* .searchInput {
   border-radius: 1em;
   padding: 0.3em;
   margin-bottom: 0;
-}
-.title {
+} */
+/* .title {
   display: block;
-}
+} */
