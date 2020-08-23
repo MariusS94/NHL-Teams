@@ -5,6 +5,7 @@ const InputField = styled.input`
   border-radius: 1em;
   padding: 0.3em;
   margin-bottom: 0;
+  border: none;
 `;
 
 const SearchInput = (probs) => {

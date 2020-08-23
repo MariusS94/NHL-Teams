@@ -8,7 +8,7 @@ const ContainerListItemText = styled.div`
 const ListItemName = styled.p`
   font-size: 1.2rem;
   font-weight: bold;
-  padding-left: 0.3rem;
+  padding-left: 2rem;
   padding-top: 0.3rem;
 `;
 
