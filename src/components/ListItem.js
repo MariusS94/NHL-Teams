@@ -1,11 +1,12 @@
 import React from "react";
 import "./ListItem.css";
+import { Link } from "react-router-dom";
 
-const ListItem = (props) => {
+const ListItem = ({ link, children }) => {
   return (
-    <a className={"listItem"} href="link">
-      {props.children}
-    </a>
+    <Link className={"listItem"} to={link}>
+      {children}
+    </Link>
   );
 };
 
