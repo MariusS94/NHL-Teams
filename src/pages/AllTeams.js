@@ -8,6 +8,30 @@ import ListItemText from "../components/ListItemText";
 import ListItemIcon from "../components/ListItemIcon";
 import player from "../assets/eishockey.svg";
 import { useQuery } from "react-query";
+import SearchInput from "../components/SearchInput";
+import styled from "@emotion/styled";
+import Footer from "../components/Footer";
+
+const ContainerApp = styled.div`
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+`;
+
+const HeaderAllTeams = styled.header`
+  text-align: center;
+  padding: 1.5em;
+  font-size: 1.4rem;
+  font-weight: bold;
+  background: var(--bg-bluegradient-);
+`;
+
+const MainAllTeams = styled.main`
+  background: var(--bg-greygradient-);
+  border: solid;
+  border-width: 5px 0px;
+  overflow: auto;
+`;
 
 const AllTeams = () => {
   const [query, setQuery] = useState("");
@@ -26,19 +50,16 @@ const AllTeams = () => {
   });
 
   return (
-    <div className="app">
-      <header>
+    <ContainerApp>
+      <HeaderAllTeams>
         <div className="title">NHL-Teams</div>
-        <input
+        <SearchInput
           value={query}
-          onChange={(event) =>
-            ((value) => setQuery(value))(event.target.value.trim())
-          }
+          onChange={(value) => setQuery(value)}
           placeholder="Search team"
-          className="searchInput"
-        ></input>
-      </header>
-      <main>
+        ></SearchInput>
+      </HeaderAllTeams>
+      <MainAllTeams>
         <List>
           {filteredTeam?.map((team) => (
             <ListItem key={team.id} link={`/teams/${team.id}`}>
@@ -47,9 +68,9 @@ const AllTeams = () => {
             </ListItem>
           ))}
         </List>
-      </main>
-      <footer>Placeholder</footer>
-    </div>
+      </MainAllTeams>
+      <Footer>Placeholder</Footer>
+    </ContainerApp>
   );
 };
 
