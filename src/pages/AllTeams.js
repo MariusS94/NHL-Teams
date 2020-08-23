@@ -8,33 +8,48 @@ import ListItemText from "../components/ListItemText";
 import ListItemIcon from "../components/ListItemIcon";
 import player from "../assets/eishockey.svg";
 
-function waitFor(time) {
+/* function waitFor(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
-
+ */
 const AllTeams = () => {
   const [team, setTeam] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     async function fetchTeams() {
-      await waitFor(1000);
+      setIsLoading(true);
       const teamInfo = await fetchData();
-      setIsLoaded(true);
       setTeam(teamInfo);
+      setIsLoading(false);
     }
     fetchTeams();
   }, []);
-  if (!isLoaded) {
+
+  if (isLoading || team === null) {
     return <LoadingScreen src={hockeypuck} alt="loading icon puck" />;
   }
+  const filteredTeam = team.filter((team) => {
+    return team.name.toLowerCase().startsWith(query.toLowerCase());
+  });
 
   return (
     <div className="app">
-      <header>NHL-Teams</header>
+      <header>
+        <div className="title">NHL-Teams</div>
+        <input
+          value={query}
+          onChange={(event) =>
+            ((value) => setQuery(value))(event.target.value.trim())
+          }
+          placeholder="Search team"
+          className="searchInput"
+        ></input>
+      </header>
       <main>
         <List>
-          {team?.map((team) => (
+          {filteredTeam?.map((team) => (
             <ListItem key={team.id} link={`/teams/${team.id}`}>
               <ListItemText name={team.name} />
               <ListItemIcon image={player} alt={"hockeyplayer icon"} />
