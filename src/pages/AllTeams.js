@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { fetchData } from "../api/nhl-api";
 import LoadingScreen from "../components/LoadingScreen";
 import hockeypuck from "../assets/puck.svg";
@@ -7,16 +7,16 @@ import ListItem from "../components/ListItem";
 import ListItemText from "../components/ListItemText";
 import ListItemIcon from "../components/ListItemIcon";
 import player from "../assets/eishockey.svg";
+import { useQuery } from "react-query";
 
 /* function waitFor(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
  */
 const AllTeams = () => {
-  const [team, setTeam] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [query, setQuery] = useState("");
-
+  /* const [isLoading, setIsLoading] = useState(false);
+  
+  
   useEffect(() => {
     async function fetchTeams() {
       setIsLoading(true);
@@ -26,11 +26,23 @@ const AllTeams = () => {
     }
     fetchTeams();
   }, []);
-
+  
   if (isLoading || team === null) {
     return <LoadingScreen src={hockeypuck} alt="loading icon puck" />;
+  }  */
+  /* const [team, setTeam] = useState(null); */
+  const [query, setQuery] = useState("");
+  const { isLoading, isError, data, error } = useQuery("teams", fetchData);
+
+  if (isLoading) {
+    return <LoadingScreen src={hockeypuck} alt="loading icon puck" />;
   }
-  const filteredTeam = team.filter((team) => {
+
+  if (isError) {
+    return <span>Error: {error.message}</span>;
+  }
+
+  const filteredTeam = data.filter((team) => {
     return team.name.toLowerCase().startsWith(query.toLowerCase());
   });
 
