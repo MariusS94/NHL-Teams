@@ -1,5 +1,4 @@
 import React from "react";
-import "./ListItemIcon.css";
 import styled from "@emotion/styled";
 
 const ListItemImg = styled.img`
