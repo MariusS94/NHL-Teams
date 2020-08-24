@@ -43,20 +43,20 @@ const MainDetails = styled.main`
 `;
 
 const Details = () => {
-  const { name } = useParams();
+  const { teamId } = useParams();
   const [team, setTeam] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
     async function fetchTeams() {
-      console.log(name);
-      const teamInfo = await fetchTeamData(name);
+      console.log(teamId);
+      const teamInfo = await fetchTeamData(teamId);
       setIsLoaded(true);
       setTeam(teamInfo);
     }
     fetchTeams();
-  }, [name]);
+  }, [teamId]);
 
   if (!isLoaded) {
     return <LoadingScreen src={hockeypuck} alt="loading icon puck" />;
