@@ -1,5 +1,6 @@
 const express = require("express");
-const { fetchTeamInfo } = require("./src/api/nhl-fetch");
+const { fetchTeamInfo, fetchTeamDetails } = require("./src/api/nhl-fetch");
+
 const app = express();
 
 const port = 3000;
@@ -9,6 +10,14 @@ function main() {
     const teamsData = await fetchTeamInfo();
     console.log(teamsData);
     response.send(teamsData);
+  });
+
+  app.get("/teams/:teamId", async (request, response) => {
+    const { teamId } = request.params;
+    const teamDetails = await fetchTeamDetails(teamId);
+    console.log(teamDetails);
+
+    response.send(teamDetails);
   });
 
   app.listen(port, function () {
