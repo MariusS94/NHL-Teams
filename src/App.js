@@ -15,7 +15,7 @@ function App() {
     <>
       <Router>
         <Switch>
-          <Route exact path="/teams/:teamIdto">
+          <Route exact path="/teams/:teamId">
             <Details></Details>
           </Route>
           <Route exact path="/teams">
