@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import List from "../components/List";
 import ListItem from "../components/ListItem";
 import ListItemText from "../components/ListItemText";
-import { fetchTeamData } from "../api/nhl-api";
+import { fetchTeamData } from "../api/server-fetch";
 import LoadingScreen from "../components/LoadingScreen";
 import hockeypuck from "../assets/puck.svg";
 import { useParams, useHistory } from "react-router-dom";
