@@ -28,10 +28,10 @@ export async function fetchTeamData(teamId) {
   const team = result.map((teamdata) => ({
     name: teamdata.name,
     id: teamdata.id,
-    city: teamdata.venue.city,
-    venue: teamdata.venue.name,
-    firstYear: teamdata.firstYearOfPlay,
-    conference: teamdata.conference.name,
+    city: teamdata.city,
+    venue: teamdata.name,
+    firstYear: teamdata.firstYear,
+    conference: teamdata.conference,
   }));
 
   console.log(team);
