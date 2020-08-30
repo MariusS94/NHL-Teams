@@ -1,5 +1,6 @@
 export async function fetchData() {
-  const respond = await fetch("https://statsapi.web.nhl.com/api/v1/teams");
+  const respond = await fetch("http://localhost:3000/teams");
+  console.log(respond);
 
   if (!respond.ok) {
     throw new Error(respond);
@@ -7,27 +8,24 @@ export async function fetchData() {
 
   const result = await respond.json();
 
-  const team = result.teams.map((teamdata) => ({
+  const team = result.map((teamdata) => ({
     name: teamdata.name,
     id: teamdata.id,
   }));
 
-  console.log(team);
   return team;
 }
 
 export async function fetchTeamData(teamId) {
   console.log(teamId);
-  const respond = await fetch(
-    `https://statsapi.web.nhl.com/api/v1/teams/${teamId}`
-  );
+  const respond = await fetch(`http://localhost:3000/teams/${teamId}`);
   if (!respond.ok) {
     throw new Error(respond);
   }
 
   const result = await respond.json();
 
-  const team = result.teams.map((teamdata) => ({
+  const team = result.map((teamdata) => ({
     name: teamdata.name,
     id: teamdata.id,
     city: teamdata.venue.city,

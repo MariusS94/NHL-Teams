@@ -5,7 +5,11 @@ const app = express();
 
 const port = 3000;
 
+/* const cors = require("cors"); */
+
 function main() {
+  /* app.use(cors()); */
+
   app.get("/teams", async (request, response) => {
     const teamsData = await fetchTeamInfo();
     console.log(teamsData);

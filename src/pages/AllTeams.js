@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { fetchData } from "../api/nhl-api";
+import { fetchData } from "../api/server-fetch";
 import LoadingScreen from "../components/LoadingScreen";
 import hockeypuck from "../assets/puck.svg";
 import List from "../components/List";

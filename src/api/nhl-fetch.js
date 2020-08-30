@@ -6,6 +6,7 @@ async function fetchTeamInfo() {
   if (!respond.ok) {
     throw new Error(respond);
   }
+  console.log(respond);
 
   const result = await respond.json();
 
